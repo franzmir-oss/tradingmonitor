@@ -1675,7 +1675,7 @@ for ticker, nombre_empresa in nombres_amigables.items():
 print(f"\n📊 Total de gráficos con señales enviados: {senales_encontradas}")
 print("==========================================================================")
 
-!pip install mplfinance -q
+
 
 import io
 import warnings
