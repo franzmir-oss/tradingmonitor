@@ -833,11 +833,11 @@ print(response.json())
 
 import requests
 
-token_part1 = "8556809936:AAH5diJ9nkG7ySF4Z8AVdt"
-token_part2 = "S-8ZvsZYVv0pQ"
-TELEGRAM_TOKEN = token_part1 + token_part2
-
-CHAT_ID = "8642681599"
+# -- CONFIGURACION DE TELEGRAM --
+p1 = "855689936:AAHSd1J9Nko7ySF4ZBAVDVT"
+p2 = "S-8ZvsZYVv0pQ"
+TELEGRAM_TOKEN = p1 + p2
+CHAT_ID = "864286199"
 
 url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 payload = {
