@@ -2,9 +2,8 @@ name: Run Trading Monitor
 
 on:
   schedule:
-    - cron: '30 8 * * 1-5'  # Ejecuta de lunes a viernes a las 08:30 UTC
-  workflow_dispatch:        # Permite ejecutarlo manualmente desde GitHub
-
+- cron: '30 13-20 * * 1-5'
+workflow_dispatch:
 jobs:
   run-script:
     runs-on: ubuntu-latest
