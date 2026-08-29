@@ -9,7 +9,7 @@ Original file is located at
 
 print("Mi agente de trading está funcionando 🚀")
 
-!pip install yfinance -q
+
 
 import yfinance as yf
 
