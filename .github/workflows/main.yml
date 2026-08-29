@@ -2,7 +2,7 @@ name: Run Trading Monitor
 
 on:
   schedule:
-- cron: '30 13-20 * * 1-5'
+  - cron: '30 13-20 * * 1-5'
 workflow_dispatch:
 jobs:
   run-script:
