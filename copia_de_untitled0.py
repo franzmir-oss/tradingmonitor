@@ -761,7 +761,7 @@ print("=========================================================================
 
 import requests
 
-TELEGRAM_TOKEN = "8556809936:AAH5diJ9nkG7ySF4Z8AVdt
+TELEGRAM_TOKEN = "8556809936:AAH5diJ9nkG7ySF4Z8AVdt"
 
 S-8ZvsZYVv0pQ"  # Pon tu token aquí
 CHAT_ID = "8642681599"
