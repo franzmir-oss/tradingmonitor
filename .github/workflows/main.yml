@@ -24,4 +24,4 @@ jobs:
 
       - name: Run script
         run: |
-          python copia_de_untitled.py
+          python copia_de_untitled0.py
