@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sesiones de Otoño · Fran Mir Estudio · Aranjuez</title>
+<title>Sesiones de Otoño · Franz Mir Studio · Aranjuez</title>
 <meta name="description" content="Sesiones fotográficas de otoño en Aranjuez. Solo 6 plazas, sábados y domingos desde las 16:00.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -238,6 +238,16 @@ footer p{opacity:.6;font-size:14px;margin-top:20px}
 .q-total .hl{background:linear-gradient(90deg,rgba(240,168,96,.25),rgba(224,102,60,.18));border-radius:12px;padding:12px 14px;margin-top:10px}
 .q-foot{margin-top:18px;font-size:12px;opacity:.55;line-height:1.5}
 
+/* Términos y condiciones */
+.terms{margin-top:22px;border-top:1px solid rgba(27,18,12,.12);padding-top:18px}
+.terms summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.25em;text-transform:uppercase;font-weight:600;opacity:.75}
+.terms summary::-webkit-details-marker{display:none}
+.terms summary::after{content:"+";font-size:20px;letter-spacing:0;color:var(--rust);transition:transform .3s}
+.terms[open] summary::after{transform:rotate(45deg)}
+.terms ol{margin:14px 0 0 18px;display:grid;gap:9px;font-size:13px;line-height:1.5;opacity:.85}
+.terms ol b{font-weight:600}
+.check a{color:var(--amber)}
+
 /* Formulario */
 .panel{border-radius:28px;padding:clamp(24px,4vw,40px);background:rgba(27,18,12,.7);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);align-self:start;position:sticky;top:90px}
 .stepper{display:flex;gap:8px;margin-bottom:26px}
@@ -323,7 +333,7 @@ footer p{opacity:.6;font-size:14px;margin-top:20px}
 <div class="grain"></div>
 
 <nav class="nav" id="nav">
-  <div class="brand">Fran Mir <em>Estudio</em></div>
+  <div class="brand">Franz Mir <em>Studio</em></div>
   <a href="#fechas" class="pill sm"><span>Ver fechas</span><span class="arrow">→</span></a>
 </nav>
 
@@ -421,7 +431,7 @@ footer p{opacity:.6;font-size:14px;margin-top:20px}
 
   <footer>
     <div class="big split" data-reveal>Otoño</div>
-    <p>Fran Mir Estudio · Fotografía · Aranjuez</p>
+    <p>Franz Mir Studio · Fotografía · Aranjuez</p>
   </footer>
 </main>
 
@@ -430,7 +440,7 @@ footer p{opacity:.6;font-size:14px;margin-top:20px}
   <div class="bk-bg"></div>
   <div class="bk-top">
     <button class="back" id="back">← Volver al calendario</button>
-    <div class="brand">Fran Mir <em>Estudio</em></div>
+    <div class="brand">Franz Mir <em>Studio</em></div>
   </div>
   <div class="bk-hero">
     <p class="kicker">Reserva tu sesión de otoño</p>
@@ -439,11 +449,11 @@ footer p{opacity:.6;font-size:14px;margin-top:20px}
   </div>
 
   <div class="bk-grid">
-    <!-- Presupuesto -->
+    <!-- Resumen de la reserva -->
     <div class="quote" id="quote">
       <div class="q-head">
-        <div class="q-brand">Fran Mir <em>Estudio</em><small>Fotografía · Aranjuez</small></div>
-        <div class="q-meta"><b>Presupuesto</b>Nº <span id="qNum">—</span><br>Fecha: <span id="qToday">—</span></div>
+        <div class="q-brand">Franz Mir <em>Studio</em><small>Fotografía · Aranjuez</small></div>
+        <div class="q-meta"><b>Reserva</b>Solicitada el <span id="qToday">—</span></div>
       </div>
       <div class="q-sec">
         <h5>Cliente</h5>
@@ -474,7 +484,24 @@ footer p{opacity:.6;font-size:14px;margin-top:20px}
         <div class="q-row"><span>Resto a abonar el día de la sesión</span><b>90,00 €</b></div>
         <div class="q-row grand"><span>Total</span><span>120,00 €</span></div>
       </div>
-      <p class="q-foot">La señal de 30 € bloquea la fecha elegida y se descuenta del total de la sesión. La reserva queda confirmada al recibir el Bizum.</p>
+      <p class="q-foot">La señal de 30 € bloquea la fecha elegida y se descuenta del total de la sesión. El resto (90 €) se abona el día de la sesión, en efectivo o con tarjeta.</p>
+      <details class="terms" id="terms">
+        <summary>Términos y condiciones</summary>
+        <ol>
+          <li><b>Reserva.</b> La fecha queda bloqueada al enviar el formulario. Para confirmarla, debe hacerse el Bizum de 30 € en un plazo máximo de 24 horas; si no se recibe, la fecha se libera y queda disponible para otros clientes.</li>
+          <li><b>Señal no reembolsable.</b> La señal de 30 € se descuenta del precio total de la sesión, pero no se devuelve en caso de cancelación por parte del cliente.</li>
+          <li><b>Pago del resto.</b> Los 90 € restantes se abonan el día de la sesión, antes de comenzar, en efectivo o con tarjeta (Visa).</li>
+          <li><b>Cambios de fecha.</b> Cualquier cambio o cancelación debe comunicarse con un mínimo de 3 días de antelación. Con ese aviso se permite un único cambio de fecha, sujeto a disponibilidad, conservando la señal.</li>
+          <li><b>No presentarse.</b> Si el cliente no acude a la sesión, o cancela con menos de 3 días de antelación, perderá la señal.</li>
+          <li><b>Puntualidad.</b> La sesión empieza a la hora acordada (a partir de las 16:00). Los retrasos se descuentan del tiempo de la sesión, ya que la luz de la tarde es limitada.</li>
+          <li><b>Climatología.</b> Si la lluvia o el mal tiempo impiden la sesión, Franz Mir Studio propondrá una nueva fecha sin coste y se conservará la señal. Si es el estudio quien cancela por causa de fuerza mayor, se ofrecerá una nueva fecha o la devolución íntegra de la señal.</li>
+          <li><b>Selección y entrega.</b> El cliente dispone de 15 días desde la entrega de la galería online para seleccionar sus 30 fotografías. Las fotos editadas, junto con todas las de la sesión, se entregan una semana después de recibir la selección. La galería estará disponible durante 30 días; pasado ese plazo, el estudio no garantiza la conservación de los archivos.</li>
+          <li><b>Edición.</b> La edición sigue el estilo propio del estudio. No se entregan archivos RAW. Las fotografías editadas adicionales a las 30 incluidas tienen un coste extra.</li>
+          <li><b>Derechos de autor.</b> Las fotografías son obra de Franz Mir Studio, que conserva los derechos de autor. El cliente puede usarlas para fines personales y compartirlas en redes sociales mencionando al estudio. No está permitido su uso comercial ni alterar la edición o aplicar filtros sin autorización.</li>
+          <li><b>Uso de imagen.</b> El estudio solo usará las fotografías en su portfolio y redes sociales si el cliente lo autoriza expresamente.</li>
+          <li><b>Protección de datos.</b> Los datos facilitados se usan únicamente para gestionar la reserva y contactar con el cliente, y no se ceden a terceros.</li>
+        </ol>
+      </details>
     </div>
 
     <!-- Formulario / Bizum -->
@@ -491,7 +518,8 @@ footer p{opacity:.6;font-size:14px;margin-top:20px}
             <div class="field full"><input id="fMail" type="email" placeholder=" " autocomplete="email" required><label for="fMail">Correo electrónico</label><div class="msg">Escribe un correo válido</div></div>
             <div class="field full"><input id="fTel" type="tel" placeholder=" " autocomplete="tel" inputmode="tel" required><label for="fTel">Número de teléfono</label><div class="msg">Escribe un teléfono válido</div></div>
           </div>
-          <label class="check" id="chk"><input type="checkbox" id="fOk"> He leído el resumen y entiendo que la fecha se bloquea al recibir el Bizum de 30 €.</label>
+          <label class="check" id="chk"><input type="checkbox" id="fOk"> <span>He leído y acepto los <a href="#terms" id="openTerms">términos y condiciones</a>. Al continuar, esta fecha queda bloqueada a mi nombre y haré el Bizum de 30 € en las próximas 24 horas.</span></label>
+          <label class="check"><input type="checkbox" id="fImg"> <span>Autorizo a Franz Mir Studio a usar algunas fotos de mi sesión en su portfolio y redes sociales (opcional).</span></label>
           <button class="pill btn-full" type="submit"><span>Continuar al Bizum</span><span class="arrow">→</span></button>
         </form>
       </div>
@@ -516,7 +544,6 @@ footer p{opacity:.6;font-size:14px;margin-top:20px}
         <a class="pill btn-full" id="wa" target="_blank" rel="noopener"><span>Ya he hecho el Bizum · Avisar por WhatsApp</span><span class="arrow">→</span></a>
         <div class="row-btns">
           <button class="ghost" id="edit">← Editar datos</button>
-          <button class="ghost" id="print">⎙ Descargar presupuesto</button>
         </div>
       </div>
     </div>
@@ -533,8 +560,11 @@ const CONFIG = {
   year: 2026,
   month: 10,                     // 0 = enero … 10 = noviembre
   soldOut: ['2026-11-14', '2026-11-22'], // sábado y domingo agotados (semanas distintas)
-  bizumPhone: '622517789',
-  whatsapp: '34622517789',
+  bizumPhone: '622517789',       // número al que se hace el Bizum
+  whatsapp: '34691429298',        // WhatsApp donde te escriben los clientes
+  // URL de la aplicación web de Google Apps Script (ver google-apps-script.gs).
+  // Con ella, cada fecha reservada se bloquea automáticamente para todo el mundo.
+  bookingsApi: '',
   price: 120, deposit: 30,
   minDaysAhead: 2                // no se puede reservar con menos de 2 días de antelación
 };
@@ -658,13 +688,47 @@ document.querySelectorAll('[data-tilt]').forEach(c => {
   })();
 })();
 
+/* ---------- Fechas reservadas (bloqueo automático) ---------- */
+const booked = new Set();
+const LS_KEY = 'otono-reservas';
+async function loadBooked(){
+  try {
+    let list = [];
+    if (CONFIG.bookingsApi) {
+      const r = await fetch(CONFIG.bookingsApi + '?t=' + Date.now());
+      list = (await r.json()).booked || [];
+    } else {
+      list = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
+    }
+    booked.clear(); list.forEach(d => booked.add(d));
+  } catch (err) { console.warn('No se pudieron cargar las reservas', err); }
+}
+// Devuelve 'ok', 'taken' o 'error'
+async function reserveDate(dateIso, info){
+  if (!CONFIG.bookingsApi) {
+    const list = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
+    if (list.includes(dateIso)) return 'taken';
+    list.push(dateIso); localStorage.setItem(LS_KEY, JSON.stringify(list));
+    return 'ok';
+  }
+  try {
+    const r = await fetch(CONFIG.bookingsApi, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ date: dateIso, ...info })
+    });
+    const res = await r.json();
+    return res.ok ? 'ok' : (res.reason === 'taken' ? 'taken' : 'error');
+  } catch (err) { return 'error'; }
+}
+
 /* ---------- Calendario ---------- */
 const today = new Date(); today.setHours(0,0,0,0);
 const minDate = new Date(today); minDate.setDate(minDate.getDate() + CONFIG.minDaysAhead);
 function status(d){
   const dow = d.getDay(); // 0 dom, 6 sáb
   if (dow !== 0 && dow !== 6) return 'off';
-  if (CONFIG.soldOut.includes(iso(d))) return 'sold';
+  if (CONFIG.soldOut.includes(iso(d)) || booked.has(iso(d))) return 'sold';
   if (d < minDate) return 'sold';
   return 'free';
 }
@@ -692,18 +756,19 @@ function renderCalendar(){
   $('#left').textContent = free === 0 ? 'Todas las plazas agotadas' : `Quedan ${free} plaza${free > 1 ? 's' : ''} disponibles`;
 }
 renderCalendar();
+loadBooked().then(renderCalendar);
+setInterval(() => { if (!booking.classList.contains('open')) loadBooked().then(renderCalendar); }, 60000);
 
 /* ---------- Reserva ---------- */
 const booking = $('#booking');
-let chosen = null, data = null;
+let chosen = null, data = null, myReservation = null;
 function openBooking(d, e){
   chosen = d;
   booking.style.setProperty('--cx', (e ? e.clientX : innerWidth / 2) + 'px');
   booking.style.setProperty('--cy', (e ? e.clientY : innerHeight / 2) + 'px');
   $('#bkDate').textContent = fmtShort(d);
   $('#qDate').textContent = fmtLong(d);
-  $('#qToday').textContent = today.toLocaleDateString('es-ES');
-  $('#qNum').textContent = 'OT-' + iso(d).replace(/-/g,'').slice(2) + '-' + Math.floor(100 + Math.random() * 900);
+  $('#qToday').textContent = new Date().toLocaleDateString('es-ES');
   showView(1);
   booking.scrollTop = 0;
   booking.classList.add('open'); booking.setAttribute('aria-hidden','false');
@@ -724,7 +789,7 @@ function showView(n){
   $('#st1').classList.add('on'); $('#st2').classList.toggle('on', n >= 2); $('#st3').classList.toggle('on', n >= 3);
 }
 
-$('#form').addEventListener('submit', e => {
+$('#form').addEventListener('submit', async e => {
   e.preventDefault();
   const f = { name: $('#fName'), last: $('#fLast'), mail: $('#fMail'), tel: $('#fTel') };
   const ok = {
@@ -740,23 +805,39 @@ $('#form').addEventListener('submit', e => {
   if (!valid) return;
 
   data = { name: f.name.value.trim(), last: f.last.value.trim(), mail: f.mail.value.trim(), tel: f.tel.value.trim() };
+
+  // Bloquear la fecha antes de pasar al Bizum
+  const dateIso = iso(chosen);
+  if (myReservation !== dateIso) {
+    const btn = $('#form button[type=submit]'), label = btn.firstElementChild.textContent;
+    btn.disabled = true; btn.firstElementChild.textContent = 'Reservando tu fecha…';
+    const result = await reserveDate(dateIso, data);
+    btn.disabled = false; btn.firstElementChild.textContent = label;
+    if (result === 'taken') {
+      booked.add(dateIso); renderCalendar(); closeBooking(false);
+      toast('Lo siento, esta fecha se acaba de reservar. Elige otra 🍂');
+      return;
+    }
+    if (result === 'error') { toast('No se ha podido reservar. Revisa tu conexión e inténtalo de nuevo.'); return; }
+    myReservation = dateIso; booked.add(dateIso); renderCalendar();
+  }
   $('#qName').textContent = `${data.name} ${data.last}`;
   $('#qMail').textContent = data.mail;
   $('#qTel').textContent = data.tel;
   const dd = `${pad(chosen.getDate())}/${pad(chosen.getMonth()+1)}`;
   const concept = `OTOÑO ${dd} ${data.name} ${data.last}`;
   $('#concept').textContent = concept;
-  const msg = `¡Hola Fran! 🍂 Acabo de hacer el Bizum de 30 € para reservar la sesión de otoño.\n\n` +
-    `📅 Fecha: ${fmtLong(chosen)} a las 16:00 (Aranjuez)\n` +
-    `👤 Nombre: ${data.name} ${data.last}\n✉️ Correo: ${data.mail}\n📞 Teléfono: ${data.tel}\n` +
-    `🧾 Presupuesto: ${$('#qNum').textContent}\nConcepto Bizum: ${concept}`;
+  const msg = `¡Hola! Soy ${data.name} ${data.last}. 🍂\n` +
+    `He reservado la fecha ${fmtLong(chosen)} a las 16:00 para la sesión de otoño en Aranjuez y ya he hecho el Bizum de 30 €. ¿Me puedes confirmar?\n\n` +
+    `Correo: ${data.mail}\nTeléfono: ${data.tel}\n` +
+    `He aceptado los términos y condiciones. Uso de fotos en portfolio y redes: ${$('#fImg').checked ? 'Sí, lo autorizo' : 'No'}.`;
   $('#wa').href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
   showView(2);
   $('#panel').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
 });
 $('#edit').addEventListener('click', () => showView(1));
+$('#openTerms').addEventListener('click', e => { e.preventDefault(); const t = $('#terms'); t.open = true; t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); });
 $('#wa').addEventListener('click', () => { $('#st3').classList.add('on'); toast('¡Gracias! Te confirmo la fecha en cuanto reciba el Bizum 🍂'); });
-$('#print').addEventListener('click', () => window.print());
 
 function copy(text, label){
   (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(
