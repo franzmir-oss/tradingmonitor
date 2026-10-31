@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sesiones de Otoño · Fran Mir Estudio · Aranjuez</title>
+<meta name="description" content="Sesiones fotográficas de otoño en Aranjuez. Solo 6 plazas, sábados y domingos desde las 16:00.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f6efe6;
+  --ink:#1b120c;
+  --amber:#f0a860;
+  --peach:#f6dcb0;
+  --rust:#e0663c;
+  --leaf:#2d3a1c;
+  --glass:rgba(27,18,12,.42);
+  --line:rgba(246,239,230,.18);
+  --grad:linear-gradient(90deg,#f8e2bb 0%,#f2b56c 45%,#e0663c 100%);
+  --sans:'Inter',system-ui,sans-serif;
+  --display:'Poppins','Inter',sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--cream);background:#120c08;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+a{color:inherit}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+/* ---------- Fondo con motion ---------- */
+.bg{position:fixed;inset:0;z-index:-3;overflow:hidden}
+.bg img{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:50% 30%;
+  transform:scale(var(--s,1.08)) translate3d(var(--mx,0px),var(--y,0px),0);will-change:transform;
+  animation:kenburns 28s ease-in-out infinite alternate;filter:saturate(1.08)}
+@keyframes kenburns{from{object-position:48% 26%}to{object-position:54% 36%}}
+.bg::after{content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(120% 70% at 50% 110%,rgba(18,12,8,.95) 10%,transparent 60%),
+    linear-gradient(180deg,rgba(18,12,8,.55) 0%,rgba(18,12,8,.1) 30%,rgba(18,12,8,.25) 60%,rgba(18,12,8,.85) 100%);
+  opacity:var(--dark,1)}
+.bg .shade{position:absolute;inset:0;background:#120c08;opacity:var(--shade,0);transition:opacity .1s linear}
+.lightleak{position:fixed;inset:-20%;z-index:-2;pointer-events:none;mix-blend-mode:screen;
+  background:radial-gradient(40% 35% at 10% 8%,rgba(255,170,70,.55),transparent 70%),
+             radial-gradient(30% 30% at 90% 30%,rgba(224,102,60,.25),transparent 70%);
+  animation:leak 12s ease-in-out infinite alternate}
+@keyframes leak{0%{transform:translate(0,0) scale(1);opacity:.75}50%{opacity:1}100%{transform:translate(6%,4%) scale(1.15);opacity:.6}}
+.grain{position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-5%,3%)}40%{transform:translate(3%,-6%)}60%{transform:translate(-2%,5%)}80%{transform:translate(6%,-2%)}100%{transform:translate(0,0)}}
+#leaves{position:fixed;inset:0;z-index:5;pointer-events:none}
+
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;background:var(--grad);transform-origin:0 50%;transform:scaleX(0)}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(18px,4vw,48px);transition:background .4s,backdrop-filter .4s,padding .4s}
+.nav.scrolled{background:rgba(18,12,8,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding-block:14px}
+.brand{font-family:var(--display);font-weight:600;letter-spacing:.02em;font-size:15px}
+.brand em{font-family:var(--serif);font-weight:400;color:var(--amber)}
+.pill{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:var(--ink);font-weight:600;border-radius:999px;padding:14px 26px;font-size:16px;text-decoration:none;
+  box-shadow:0 10px 40px -10px rgba(240,168,96,.6);transition:transform .35s cubic-bezier(.2,.9,.3,1.3),box-shadow .35s;position:relative;overflow:hidden}
+.pill::before{content:"";position:absolute;inset:0;background:var(--grad);transform:translateX(-101%);transition:transform .5s cubic-bezier(.7,0,.2,1);z-index:0}
+.pill>*{position:relative;z-index:1}
+.pill:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 50px -12px rgba(224,102,60,.8)}
+.pill:hover::before{transform:translateX(0)}
+.pill .arrow{transition:transform .35s}
+.pill:hover .arrow{transform:translateX(5px)}
+.pill.sm{padding:10px 18px;font-size:14px}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px;position:relative}
+.kicker{font-size:13px;letter-spacing:.32em;text-transform:uppercase;opacity:.8;margin-bottom:18px}
+.h-top{font-family:var(--display);font-weight:600;font-size:clamp(48px,10vw,128px);line-height:.95;letter-spacing:-.01em}
+.otono{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(110px,27vw,360px);line-height:.9;letter-spacing:-.02em;display:flex;justify-content:center;margin-top:-.04em;
+  transform:translate3d(0,var(--oy,0),0)}
+.otono .clip>span{display:inline-block;background:var(--grad);background-size:500% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateY(110%) rotate(8deg);opacity:0;filter:blur(10px);
+  transition:transform 1.4s cubic-bezier(.16,1,.3,1),opacity 1.2s,filter 1.2s;padding:0 .02em}
+.otono .clip:nth-child(1)>span{background-position:0 0}
+.otono .clip:nth-child(2)>span{background-position:25% 0}
+.otono .clip:nth-child(3)>span{background-position:50% 0}
+.otono .clip:nth-child(4)>span{background-position:75% 0}
+.otono .clip:nth-child(5)>span{background-position:100% 0}
+.loaded .otono .clip>span{transform:translate3d(calc(var(--spread,0) * var(--i)),0,0) rotate(0);opacity:1;filter:blur(0)}
+.otono .clip{overflow:hidden;display:inline-block;padding-bottom:.08em}
+.hero .sub{margin-top:18px;font-size:clamp(18px,2.2vw,26px);font-weight:600;line-height:1.35;max-width:560px}
+.hero .sub span{opacity:.72;font-weight:500}
+.hero .cta{margin-top:38px}
+.reveal-up{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.loaded .hero .reveal-up,.in .reveal-up,.reveal-up.in{opacity:1;transform:none}
+.d1{transition-delay:.15s!important}.d2{transition-delay:.3s!important}.d3{transition-delay:.45s!important}.d4{transition-delay:.6s!important}.d5{transition-delay:.75s!important}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.7}
+.scroll-hint i{width:1px;height:46px;background:linear-gradient(var(--cream),transparent);animation:drip 2s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* ---------- Marquee ---------- */
+.marquee{overflow:hidden;border-block:1px solid var(--line);background:rgba(18,12,8,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:22px 0;transform:rotate(-2deg) scale(1.04);margin:40px 0}
+.marquee .track{display:flex;width:max-content;animation:marq 32s linear infinite;transform:translateX(var(--mq,0))}
+.marquee span{font-family:var(--serif);font-style:italic;font-size:clamp(28px,4vw,48px);padding:0 28px;white-space:nowrap}
+.marquee span:nth-child(even){font-family:var(--display);font-style:normal;font-weight:600;color:var(--amber)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- Secciones ---------- */
+section{position:relative;z-index:2}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,48px)}
+.sec{padding:120px 0}
+.eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--amber)}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(36px,6vw,76px);line-height:1;letter-spacing:-.015em}
+h2 em{font-family:var(--serif);font-weight:400;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.lead{font-size:clamp(17px,1.6vw,20px);line-height:1.6;opacity:.82;max-width:620px;margin-top:22px}
+
+/* split words */
+.split em .w>span,footer .big .w>span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+footer .big .w{padding-bottom:.18em}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em}
+.split .w>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--d) * 60ms)}
+.split.in .w>span{transform:none}
+
+/* plazas */
+.plazas{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.bignum{font-family:var(--serif);font-style:italic;font-size:clamp(200px,30vw,420px);line-height:.8;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center;position:relative}
+.bignum small{display:block;font-family:var(--display);font-style:normal;font-weight:600;font-size:clamp(18px,2vw,24px);color:var(--cream);letter-spacing:.2em;text-transform:uppercase;-webkit-text-fill-color:var(--cream);margin-top:10px}
+.facts{display:grid;gap:14px;margin-top:34px}
+.fact{display:flex;align-items:center;gap:18px;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.fact b{font-family:var(--display);font-weight:600;font-size:18px;display:block}
+.fact small{opacity:.7;font-size:14px}
+.ico{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(248,226,187,.18),rgba(224,102,60,.25));font-size:20px}
+
+/* incluye */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:60px}
+.card{position:relative;padding:30px 26px 34px;border-radius:24px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden;
+  transform-style:preserve-3d;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .4s}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--px,50%) var(--py,50%),rgba(240,168,96,.22),transparent 45%);opacity:0;transition:opacity .4s;pointer-events:none}
+.card:hover{border-color:rgba(240,168,96,.5)}
+.card:hover::after{opacity:1}
+.card .n{font-family:var(--serif);font-style:italic;font-size:64px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card h3{font-family:var(--display);font-weight:600;font-size:20px;margin:16px 0 10px}
+.card p{font-size:15px;line-height:1.55;opacity:.75}
+.price-band{margin-top:28px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:28px 34px;border-radius:24px;background:linear-gradient(120deg,rgba(248,226,187,.14),rgba(224,102,60,.22));border:1px solid rgba(240,168,96,.35)}
+.price-band .p{font-family:var(--display);font-weight:700;font-size:clamp(40px,5vw,60px)}
+.price-band .p small{font-size:16px;font-weight:500;opacity:.7;margin-left:6px}
+
+/* pasos */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.steps::before{content:"";position:absolute;top:27px;left:0;right:0;height:1px;background:var(--line)}
+.steps .bar{position:absolute;top:27px;left:0;height:1px;width:100%;background:var(--grad);transform-origin:0;transform:scaleX(var(--sp,0))}
+.step{padding-right:24px;position:relative}
+.step .dot{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;background:#1b120c;border:1px solid rgba(240,168,96,.5);font-family:var(--serif);font-style:italic;font-size:24px;color:var(--amber);position:relative;z-index:1}
+.step h4{font-family:var(--display);font-weight:600;font-size:18px;margin:22px 0 8px}
+.step p{font-size:15px;opacity:.72;line-height:1.55}
+
+/* ---------- Calendario ---------- */
+.cal-wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:start}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:30px;font-size:14px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:5px;margin-right:8px;vertical-align:-2px}
+.legend .a i{background:var(--grad)}
+.legend .x i{background:rgba(246,239,230,.12);border:1px solid var(--line)}
+.counter{margin-top:30px;display:inline-flex;align-items:center;gap:12px;padding:12px 18px;border-radius:999px;background:rgba(224,102,60,.18);border:1px solid rgba(224,102,60,.45);font-weight:600}
+.counter .pulse{width:10px;height:10px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 0 rgba(224,102,60,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 14px rgba(224,102,60,0)}100%{box-shadow:0 0 0 0 rgba(224,102,60,0)}}
+.calendar{padding:30px;border-radius:30px;border:1px solid var(--line);background:rgba(18,12,8,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 40px 100px -40px rgba(0,0,0,.8)}
+.cal-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px}
+.cal-head h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:44px;text-transform:capitalize}
+.cal-head span{font-family:var(--display);font-size:15px;opacity:.6}
+.dow,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.dow div{text-align:center;font-size:12px;letter-spacing:.15em;text-transform:uppercase;opacity:.5;padding-bottom:8px}
+.dow div:nth-child(n+6){color:var(--amber);opacity:.9}
+.day{aspect-ratio:1/1.05;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;position:relative;
+  opacity:0;transform:translateY(20px) scale(.9);transition:opacity .6s,transform .6s cubic-bezier(.16,1,.3,1),background .3s,box-shadow .3s;transition-delay:calc(var(--k) * 22ms)}
+.calendar.in .day{opacity:1;transform:none}
+.day .num{font-family:var(--display);font-weight:600;font-size:clamp(15px,1.8vw,20px)}
+.day .tag{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase}
+.day.empty{visibility:hidden}
+.day.off{background:rgba(246,239,230,.05);border:1px solid rgba(246,239,230,.06);color:rgba(246,239,230,.32);cursor:not-allowed}
+.day.off .num{text-decoration:line-through;text-decoration-thickness:1px}
+.day.off .tag{opacity:.8}
+.day.free{background:linear-gradient(145deg,rgba(248,226,187,.95),rgba(240,168,96,.95) 55%,rgba(224,102,60,.95));color:var(--ink);cursor:pointer;box-shadow:0 10px 30px -12px rgba(240,168,96,.8)}
+.day.free::after{content:"";position:absolute;inset:-3px;border-radius:19px;border:2px solid rgba(248,226,187,.7);opacity:0;animation:ring 2.4s ease-out infinite;animation-delay:calc(var(--k) * 90ms)}
+@keyframes ring{0%{opacity:.8;transform:scale(.92)}100%{opacity:0;transform:scale(1.12)}}
+.day.free:hover{transform:translateY(-4px) scale(1.06)!important;box-shadow:0 18px 40px -10px rgba(224,102,60,.9)}
+.day.free .tag{font-weight:700}
+.day.sold{background:rgba(224,102,60,.1);border:1px dashed rgba(224,102,60,.45);color:rgba(246,239,230,.5);cursor:not-allowed}
+.day.sold .tag{color:var(--rust);font-weight:700}
+.cal-note{margin-top:20px;font-size:14px;opacity:.65;display:flex;gap:10px;align-items:center}
+
+/* ---------- Footer ---------- */
+footer{padding:80px 0 50px;text-align:center;position:relative;z-index:2}
+footer .big{font-family:var(--serif);font-style:italic;font-size:clamp(70px,16vw,220px);line-height:.9;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+footer p{opacity:.6;font-size:14px;margin-top:20px}
+
+/* ---------- Página de reserva ---------- */
+.booking{position:fixed;inset:0;z-index:70;overflow-y:auto;background:#140d09;clip-path:circle(0% at var(--cx,50%) var(--cy,50%));transition:clip-path .9s cubic-bezier(.7,0,.2,1);visibility:hidden}
+.booking.open{clip-path:circle(150% at var(--cx,50%) var(--cy,50%));visibility:visible}
+.booking .bk-bg{position:fixed;inset:0;z-index:-1;background:url(assets/fondo-otono.jpg) center 30%/cover;opacity:.18;filter:blur(18px) saturate(1.2);transform:scale(1.1)}
+.bk-top{display:flex;justify-content:space-between;align-items:center;padding:22px clamp(18px,4vw,48px);position:sticky;top:0;z-index:5;background:linear-gradient(#140d09 60%,transparent)}
+.back{display:inline-flex;align-items:center;gap:10px;font-weight:600;padding:10px 16px;border-radius:999px;border:1px solid var(--line);transition:background .3s}
+.back:hover{background:rgba(246,239,230,.08)}
+.bk-hero{text-align:center;padding:10px 20px 40px}
+.bk-hero .kicker{color:var(--amber)}
+.bk-hero h2{font-size:clamp(34px,6vw,72px)}
+.bk-hero .when{margin-top:16px;font-size:18px;opacity:.85}
+.bk-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,48px) 80px}
+.bk-grid>*{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .9s cubic-bezier(.16,1,.3,1)}
+.booking.open .bk-grid>*{opacity:1;transform:none;transition-delay:.55s}
+.booking.open .bk-grid>*:nth-child(2){transition-delay:.7s}
+.booking .bk-hero>*{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .9s cubic-bezier(.16,1,.3,1)}
+.booking.open .bk-hero>*{opacity:1;transform:none}
+.booking.open .bk-hero>*:nth-child(1){transition-delay:.35s}
+.booking.open .bk-hero>*:nth-child(2){transition-delay:.45s}
+.booking.open .bk-hero>*:nth-child(3){transition-delay:.55s}
+
+/* Presupuesto */
+.quote{background:var(--cream);color:var(--ink);border-radius:28px;padding:clamp(24px,4vw,44px);position:relative;overflow:hidden;box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+.quote::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:var(--grad)}
+.q-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;border-bottom:1px solid rgba(27,18,12,.12);padding-bottom:22px}
+.q-brand{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em}
+.q-brand em{font-family:var(--serif);font-weight:400;color:var(--rust)}
+.q-brand small{display:block;font-family:var(--sans);font-weight:500;font-size:13px;opacity:.6;margin-top:4px}
+.q-meta{text-align:right;font-size:13px;line-height:1.6}
+.q-meta b{display:block;font-family:var(--display);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--rust)}
+.q-sec{padding:20px 0;border-bottom:1px solid rgba(27,18,12,.12)}
+.q-sec h5{font-size:11px;letter-spacing:.25em;text-transform:uppercase;opacity:.5;margin-bottom:10px}
+.q-row{display:flex;justify-content:space-between;gap:16px;padding:5px 0;font-size:15px}
+.q-row span:first-child{opacity:.7}
+.q-row b{font-weight:600;text-align:right}
+.q-list{list-style:none;display:grid;gap:10px}
+.q-list li{display:flex;gap:12px;font-size:15px;line-height:1.45}
+.q-list li::before{content:"";flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;background:var(--grad);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0a12 12 0 100 24 12 12 0 000-24zm-1.7 17.3L5 12l1.4-1.4 3.9 3.9 7.3-7.3L19 8.6z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0a12 12 0 100 24 12 12 0 000-24zm-1.7 17.3L5 12l1.4-1.4 3.9 3.9 7.3-7.3L19 8.6z'/%3E%3C/svg%3E") center/contain no-repeat}
+.q-total{padding-top:20px}
+.q-total .q-row{font-size:16px}
+.q-total .grand{font-family:var(--display);font-weight:700;font-size:22px;padding-top:10px}
+.q-total .hl{background:linear-gradient(90deg,rgba(240,168,96,.25),rgba(224,102,60,.18));border-radius:12px;padding:12px 14px;margin-top:10px}
+.q-foot{margin-top:18px;font-size:12px;opacity:.55;line-height:1.5}
+
+/* Formulario */
+.panel{border-radius:28px;padding:clamp(24px,4vw,40px);background:rgba(27,18,12,.7);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);align-self:start;position:sticky;top:90px}
+.stepper{display:flex;gap:8px;margin-bottom:26px}
+.stepper i{flex:1;height:4px;border-radius:4px;background:rgba(246,239,230,.12);overflow:hidden;position:relative}
+.stepper i::after{content:"";position:absolute;inset:0;background:var(--grad);transform:scaleX(0);transform-origin:0;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.stepper i.on::after{transform:scaleX(1)}
+.panel h3{font-family:var(--display);font-weight:600;font-size:26px;line-height:1.15}
+.panel h3 em{font-family:var(--serif);font-weight:400;color:var(--amber)}
+.panel>p,.view>p{opacity:.72;margin-top:8px;font-size:15px;line-height:1.55}
+.view{animation:viewIn .7s cubic-bezier(.16,1,.3,1)}
+@keyframes viewIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.field{position:relative}
+.field.full{grid-column:1/-1}
+.field input{width:100%;padding:24px 16px 10px;border-radius:14px;border:1px solid var(--line);background:rgba(246,239,230,.05);color:var(--cream);font:inherit;font-size:16px;outline:none;transition:border-color .3s,background .3s,box-shadow .3s}
+.field label{position:absolute;left:16px;top:17px;font-size:15px;opacity:.6;pointer-events:none;transition:all .25s cubic-bezier(.16,1,.3,1)}
+.field input:focus,.field input:not(:placeholder-shown){border-color:rgba(240,168,96,.6);background:rgba(246,239,230,.08)}
+.field input:focus{box-shadow:0 0 0 4px rgba(240,168,96,.15)}
+.field input:focus+label,.field input:not(:placeholder-shown)+label{top:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;color:var(--amber)}
+.field.err input{border-color:var(--rust);animation:shake .4s}
+.field .msg{font-size:12px;color:#ff9b78;margin-top:6px;display:none}
+.field.err .msg{display:block}
+@keyframes shake{25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}}
+.check{display:flex;gap:12px;align-items:flex-start;margin-top:18px;font-size:13px;opacity:.8;line-height:1.5}
+.check input{margin-top:3px;accent-color:var(--amber);width:16px;height:16px;flex:none}
+.check.err{color:#ff9b78;opacity:1}
+.btn-full{width:100%;justify-content:center;margin-top:22px}
+.bizum{margin-top:22px;border-radius:22px;padding:24px;background:linear-gradient(135deg,rgba(248,226,187,.14),rgba(224,102,60,.2));border:1px solid rgba(240,168,96,.4);text-align:center}
+.bizum .amt{font-family:var(--display);font-weight:700;font-size:58px;line-height:1}
+.bizum .amt small{font-size:20px;opacity:.7}
+.bizum .tel{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.2vw,34px);letter-spacing:.04em;margin-top:14px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bizum .concept{margin-top:14px;font-size:14px;opacity:.85;background:rgba(18,12,8,.45);border-radius:12px;padding:10px 12px;word-break:break-word}
+.row-btns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+.ghost{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:600;transition:background .3s,border-color .3s;text-decoration:none}
+.ghost:hover{background:rgba(246,239,230,.08);border-color:rgba(240,168,96,.5)}
+.howto{margin-top:20px;display:grid;gap:10px;font-size:14px;line-height:1.5;counter-reset:h}
+.howto li{list-style:none;display:flex;gap:12px;opacity:.85}
+.howto li::before{counter-increment:h;content:counter(h);flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(240,168,96,.2);color:var(--amber);font-size:12px;font-weight:700}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,120px);z-index:90;background:var(--cream);color:var(--ink);padding:12px 20px;border-radius:999px;font-weight:600;font-size:14px;transition:transform .5s cubic-bezier(.16,1,.3,1);box-shadow:0 20px 40px -10px rgba(0,0,0,.6)}
+.toast.show{transform:translate(-50%,0)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:960px){
+  .plazas,.cal-wrap,.bk-grid{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:40px 0}
+  .steps::before,.steps .bar{display:none}
+  .panel{position:relative;top:0}
+}
+@media (max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .fields{grid-template-columns:1fr}
+  .calendar{padding:18px;border-radius:24px}
+  .dow,.days{gap:5px}
+  .day{border-radius:11px}
+  .day .tag{font-size:7.5px;letter-spacing:0}
+  .nav .pill{display:none}
+  .q-head{flex-direction:column}
+  .q-meta{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  #leaves{display:none}
+}
+
+/* ---------- Impresión del presupuesto ---------- */
+@media print{
+  body *{visibility:hidden}
+  .booking,.booking .quote,.booking .quote *{visibility:visible}
+  .booking{position:absolute;inset:0;clip-path:none;background:#fff;overflow:visible}
+  .booking .quote{position:absolute;left:0;top:0;width:100%;box-shadow:none;border-radius:0;opacity:1;transform:none}
+  .grain,.lightleak,#leaves,.bg{display:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<div class="progress" id="progress"></div>
+<div class="bg" id="bg"><img src="assets/fondo-otono.jpg" alt="" fetchpriority="high"><div class="shade"></div></div>
+<div class="lightleak"></div>
+<canvas id="leaves"></canvas>
+<div class="grain"></div>
+
+<nav class="nav" id="nav">
+  <div class="brand">Fran Mir <em>Estudio</em></div>
+  <a href="#fechas" class="pill sm"><span>Ver fechas</span><span class="arrow">→</span></a>
+</nav>
+
+<main id="main">
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <p class="kicker reveal-up">Aranjuez · Otoño 2026</p>
+    <h1>
+      <span class="h-top reveal-up d1" style="display:block">Sesiones de</span>
+      <span class="otono" id="otono" aria-label="Otoño">
+        <span class="clip"><span style="--i:-2">O</span></span><span class="clip"><span style="--i:-1">T</span></span><span class="clip"><span style="--i:0">O</span></span><span class="clip"><span style="--i:1">Ñ</span></span><span class="clip"><span style="--i:2">O</span></span>
+      </span>
+    </h1>
+    <p class="sub reveal-up d3">Aranjuez se pinta <span>de colores increíbles.</span></p>
+    <a href="#fechas" class="pill cta reveal-up d4"><span>Elige tu fecha</span><span class="arrow">→</span></a>
+    <div class="scroll-hint reveal-up d5">Desliza<i></i></div>
+  </header>
+
+  <!-- MARQUEE -->
+  <div class="marquee"><div class="track" id="mq">
+    <span>Golden hour</span><span>Aranjuez</span><span>Desde las 16:00</span><span>Solo 6 plazas</span><span>Hojas doradas</span><span>Sábados y domingos</span>
+    <span>Golden hour</span><span>Aranjuez</span><span>Desde las 16:00</span><span>Solo 6 plazas</span><span>Hojas doradas</span><span>Sábados y domingos</span>
+  </div></div>
+
+  <!-- PLAZAS -->
+  <section class="sec">
+    <div class="wrap plazas">
+      <div class="bignum reveal-up" data-reveal><span id="bignum">6</span><small>plazas solamente</small></div>
+      <div>
+        <p class="eyebrow reveal-up" data-reveal>Edición limitada</p>
+        <h2 class="split" data-reveal>Abro <em>6 plazas</em> para sesiones de otoño en Aranjuez</h2>
+        <p class="lead reveal-up d1" data-reveal>La luz dorada de la tarde, las hojas cayendo y los jardines de Aranjuez. Una sola sesión al día para dedicarte todo el tiempo y la mejor luz.</p>
+        <div class="facts">
+          <div class="fact reveal-up d1" data-reveal><div class="ico">☀︎</div><div><b>A partir de las 16:00</b><small>Aprovechamos la golden hour de otoño</small></div></div>
+          <div class="fact reveal-up d2" data-reveal><div class="ico">✦</div><div><b>Solo sábados y domingos</b><small>Una única sesión por día</small></div></div>
+          <div class="fact reveal-up d3" data-reveal><div class="ico">❦</div><div><b>Aranjuez</b><small>Jardines y parques en pleno otoño</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUYE -->
+  <section class="sec" style="padding-top:40px">
+    <div class="wrap">
+      <p class="eyebrow reveal-up" data-reveal>Qué incluye</p>
+      <h2 class="split" data-reveal>Todo lo que te <em>llevas</em></h2>
+      <div class="cards">
+        <article class="card reveal-up" data-reveal data-tilt><div class="n">01</div><h3>Sesión de otoño</h3><p>Sesión fotográfica en Aranjuez por la tarde, desde las 16:00, con la luz más bonita del año.</p></article>
+        <article class="card reveal-up d1" data-reveal data-tilt><div class="n">02</div><h3>Galería online</h3><p>Recibes todas las fotografías de la sesión en una galería online privada.</p></article>
+        <article class="card reveal-up d2" data-reveal data-tilt><div class="n">30</div><h3>Fotos editadas</h3><p>Seleccionas tus 30 favoritas en la galería y las edito con mimo.</p></article>
+        <article class="card reveal-up d3" data-reveal data-tilt><div class="n">7d</div><h3>Entrega en 1 semana</h3><p>Una semana después de tu selección recibes las 30 editadas + todas las fotos de la sesión.</p></article>
+      </div>
+      <div class="price-band reveal-up" data-reveal>
+        <div><div class="p">120 €<small>sesión completa</small></div><div style="opacity:.75;margin-top:4px">Reserva tu fecha con un Bizum de 30 € de señal</div></div>
+        <a href="#fechas" class="pill"><span>Reservar fecha</span><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <section class="sec" style="padding-top:40px">
+    <div class="wrap">
+      <p class="eyebrow reveal-up" data-reveal>Cómo funciona</p>
+      <h2 class="split" data-reveal>De la reserva a tus <em>fotos</em></h2>
+      <div class="steps" id="steps"><div class="bar"></div>
+        <div class="step reveal-up" data-reveal><div class="dot">1</div><h4>Elige fecha</h4><p>Pincha en un sábado o domingo disponible del calendario.</p></div>
+        <div class="step reveal-up d1" data-reveal><div class="dot">2</div><h4>Reserva con Bizum</h4><p>Rellena tus datos y haz un Bizum de 30 € para bloquear la fecha.</p></div>
+        <div class="step reveal-up d2" data-reveal><div class="dot">3</div><h4>Sesión y selección</h4><p>Hacemos la sesión y eliges tus 30 fotos en la galería online.</p></div>
+        <div class="step reveal-up d3" data-reveal><div class="dot">4</div><h4>Entrega</h4><p>En una semana: 30 editadas + todas las fotos de la sesión.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDARIO -->
+  <section class="sec" id="fechas">
+    <div class="wrap cal-wrap">
+      <div>
+        <p class="eyebrow reveal-up" data-reveal>Fechas disponibles</p>
+        <h2 class="split" data-reveal>Elige tu <em>tarde</em> de otoño</h2>
+        <p class="lead reveal-up d1" data-reveal>Pincha en una fecha disponible para ver el resumen y reservarla. Sesiones a partir de las 16:00, una sola por día.</p>
+        <div class="counter reveal-up d2" data-reveal><span class="pulse"></span><span id="left">Quedan 6 plazas</span></div>
+        <div class="legend reveal-up d3" data-reveal>
+          <span class="a"><i></i>Disponible</span>
+          <span class="x"><i></i>Agotado</span>
+        </div>
+      </div>
+      <div class="calendar reveal-up" id="calendar" data-reveal>
+        <div class="cal-head"><h3 id="calMonth">noviembre</h3><span id="calYear">2026</span></div>
+        <div class="dow"><div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div></div>
+        <div class="days" id="days"></div>
+        <p class="cal-note">☀︎ Todas las sesiones empiezan a las 16:00</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="big split" data-reveal>Otoño</div>
+    <p>Fran Mir Estudio · Fotografía · Aranjuez</p>
+  </footer>
+</main>
+
+<!-- ============ PÁGINA DE RESERVA ============ -->
+<div class="booking" id="booking" aria-hidden="true">
+  <div class="bk-bg"></div>
+  <div class="bk-top">
+    <button class="back" id="back">← Volver al calendario</button>
+    <div class="brand">Fran Mir <em>Estudio</em></div>
+  </div>
+  <div class="bk-hero">
+    <p class="kicker">Reserva tu sesión de otoño</p>
+    <h2>Tu fecha: <em id="bkDate">—</em></h2>
+    <p class="when">A partir de las <b>16:00</b> · Aranjuez</p>
+  </div>
+
+  <div class="bk-grid">
+    <!-- Presupuesto -->
+    <div class="quote" id="quote">
+      <div class="q-head">
+        <div class="q-brand">Fran Mir <em>Estudio</em><small>Fotografía · Aranjuez</small></div>
+        <div class="q-meta"><b>Presupuesto</b>Nº <span id="qNum">—</span><br>Fecha: <span id="qToday">—</span></div>
+      </div>
+      <div class="q-sec">
+        <h5>Cliente</h5>
+        <div class="q-row"><span>Nombre</span><b id="qName">Pendiente de completar</b></div>
+        <div class="q-row"><span>Correo</span><b id="qMail">—</b></div>
+        <div class="q-row"><span>Teléfono</span><b id="qTel">—</b></div>
+      </div>
+      <div class="q-sec">
+        <h5>Sesión</h5>
+        <div class="q-row"><span>Concepto</span><b>Sesión fotográfica de otoño</b></div>
+        <div class="q-row"><span>Fecha</span><b id="qDate">—</b></div>
+        <div class="q-row"><span>Hora</span><b>A partir de las 16:00</b></div>
+        <div class="q-row"><span>Lugar</span><b>Aranjuez</b></div>
+      </div>
+      <div class="q-sec">
+        <h5>Incluye</h5>
+        <ul class="q-list">
+          <li>Sesión fotográfica de otoño en Aranjuez (una única sesión ese día).</li>
+          <li>Todas las fotografías de la sesión entregadas en una galería online privada.</li>
+          <li>Selección por tu parte de 30 fotografías en la galería.</li>
+          <li>Edición profesional de las 30 fotografías seleccionadas.</li>
+          <li>Entrega de las 30 fotos editadas + todas las fotos de la sesión una semana después de tu selección.</li>
+        </ul>
+      </div>
+      <div class="q-total">
+        <div class="q-row"><span>Sesión de otoño</span><b>120,00 €</b></div>
+        <div class="q-row hl"><span><b>Señal de reserva (Bizum)</b></span><b>30,00 €</b></div>
+        <div class="q-row"><span>Resto a abonar el día de la sesión</span><b>90,00 €</b></div>
+        <div class="q-row grand"><span>Total</span><span>120,00 €</span></div>
+      </div>
+      <p class="q-foot">La señal de 30 € bloquea la fecha elegida y se descuenta del total de la sesión. La reserva queda confirmada al recibir el Bizum.</p>
+    </div>
+
+    <!-- Formulario / Bizum -->
+    <div class="panel" id="panel">
+      <div class="stepper"><i class="on" id="st1"></i><i id="st2"></i><i id="st3"></i></div>
+
+      <div class="view" id="v1">
+        <h3>Tus <em>datos</em></h3>
+        <p>Rellena tus datos antes de hacer el Bizum para que pueda asignarte la fecha.</p>
+        <form id="form" novalidate>
+          <div class="fields">
+            <div class="field"><input id="fName" placeholder=" " autocomplete="given-name" required><label for="fName">Nombre</label><div class="msg">Escribe tu nombre</div></div>
+            <div class="field"><input id="fLast" placeholder=" " autocomplete="family-name" required><label for="fLast">Apellidos</label><div class="msg">Escribe tus apellidos</div></div>
+            <div class="field full"><input id="fMail" type="email" placeholder=" " autocomplete="email" required><label for="fMail">Correo electrónico</label><div class="msg">Escribe un correo válido</div></div>
+            <div class="field full"><input id="fTel" type="tel" placeholder=" " autocomplete="tel" inputmode="tel" required><label for="fTel">Número de teléfono</label><div class="msg">Escribe un teléfono válido</div></div>
+          </div>
+          <label class="check" id="chk"><input type="checkbox" id="fOk"> He leído el resumen y entiendo que la fecha se bloquea al recibir el Bizum de 30 €.</label>
+          <button class="pill btn-full" type="submit"><span>Continuar al Bizum</span><span class="arrow">→</span></button>
+        </form>
+      </div>
+
+      <div class="view" id="v2" hidden>
+        <h3>Bloquea tu fecha con <em>Bizum</em></h3>
+        <p>Para reservar tu fecha, haz un Bizum de 30 € a este número:</p>
+        <div class="bizum">
+          <div class="amt">30<small> €</small></div>
+          <div class="tel" id="bizTel">622 517 789</div>
+          <div class="concept">Concepto: <b id="concept">—</b></div>
+          <div class="row-btns">
+            <button class="ghost" id="copyTel">⧉ Copiar número</button>
+            <button class="ghost" id="copyConcept">⧉ Copiar concepto</button>
+          </div>
+        </div>
+        <ol class="howto">
+          <li>Abre la app de tu banco y entra en Bizum.</li>
+          <li>Envía 30 € al 622 517 789 con el concepto indicado.</li>
+          <li>Pulsa el botón de abajo para avisarme y confirmo tu fecha.</li>
+        </ol>
+        <a class="pill btn-full" id="wa" target="_blank" rel="noopener"><span>Ya he hecho el Bizum · Avisar por WhatsApp</span><span class="arrow">→</span></a>
+        <div class="row-btns">
+          <button class="ghost" id="edit">← Editar datos</button>
+          <button class="ghost" id="print">⎙ Descargar presupuesto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   CONFIGURACIÓN — edita aquí las fechas
+   ========================================================= */
+const CONFIG = {
+  year: 2026,
+  month: 10,                     // 0 = enero … 10 = noviembre
+  soldOut: ['2026-11-14', '2026-11-22'], // sábado y domingo agotados (semanas distintas)
+  bizumPhone: '622517789',
+  whatsapp: '34622517789',
+  price: 120, deposit: 30,
+  minDaysAhead: 2                // no se puede reservar con menos de 2 días de antelación
+};
+
+const $ = s => document.querySelector(s);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const pad = n => String(n).padStart(2,'0');
+const iso = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const fmtLong = d => d.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const fmtShort = d => d.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+
+/* ---------- Intro ---------- */
+window.addEventListener('load', () => {
+  requestAnimationFrame(() => { document.body.classList.add('loaded'); document.body.classList.remove('locked'); });
+});
+setTimeout(() => { document.body.classList.add('loaded'); document.body.classList.remove('locked'); }, 1800);
+
+/* ---------- Split text en palabras ---------- */
+document.querySelectorAll('.split').forEach(el => {
+  let i = 0;
+  const walk = node => {
+    [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(t => {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.append(' '); return; }
+          const w = document.createElement('span'); w.className = 'w';
+          const s = document.createElement('span'); s.textContent = t; s.style.setProperty('--d', i++);
+          w.append(s); frag.append(w);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) walk(n);
+    });
+  };
+  walk(el);
+});
+
+/* ---------- Revelado al hacer scroll ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .18, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+/* ---------- Motion ligado al scroll ---------- */
+const bg = $('#bg'), bgImg = bg.querySelector('img'), shade = bg.querySelector('.shade');
+const otono = $('#otono'), nav = $('#nav'), prog = $('#progress'), mq = $('#mq'), steps = $('#steps');
+let lastY = scrollY, velocity = 0, mouseX = 0, mouseY = 0;
+function onScroll(){
+  const y = scrollY, vh = innerHeight, max = document.documentElement.scrollHeight - vh;
+  velocity = y - lastY; lastY = y;
+  const h = Math.min(y / vh, 1.5);
+  bgImg.style.setProperty('--s', 1.08 + h * .12);
+  bgImg.style.setProperty('--y', (Math.min(y, vh * 1.2) * -.1) + 'px');
+  shade.style.opacity = Math.min(h * .55, .62);
+  otono.style.setProperty('--oy', (y * .35) + 'px');
+  otono.querySelectorAll('.clip>span').forEach(s => s.style.setProperty('--spread', (h * 60) + 'px'));
+  otono.style.opacity = 1 - Math.min(h * 1.1, 1);
+  nav.classList.toggle('scrolled', y > 40);
+  prog.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+  mq.style.setProperty('--mq', (y * -.4) + 'px');
+  const r = steps.getBoundingClientRect();
+  steps.style.setProperty('--sp', Math.max(0, Math.min(1, (vh * .8 - r.top) / (r.height + vh * .3))));
+}
+addEventListener('scroll', () => requestAnimationFrame(onScroll), { passive: true });
+onScroll();
+
+addEventListener('pointermove', e => {
+  mouseX = e.clientX / innerWidth - .5; mouseY = e.clientY / innerHeight - .5;
+  if (!reduce) bgImg.style.setProperty('--mx', (mouseX * -18) + 'px');
+});
+
+/* ---------- Tarjetas con tilt 3D ---------- */
+document.querySelectorAll('[data-tilt]').forEach(c => {
+  c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    c.style.setProperty('--px', x * 100 + '%'); c.style.setProperty('--py', y * 100 + '%');
+    if (!reduce) c.style.transform = `perspective(800px) rotateY(${(x - .5) * 10}deg) rotateX(${(.5 - y) * 10}deg) translateY(-6px)`;
+  });
+  c.addEventListener('pointerleave', () => c.style.transform = '');
+});
+
+/* ---------- Hojas cayendo (canvas) ---------- */
+(function leaves(){
+  if (reduce) return;
+  const cv = $('#leaves'), ctx = cv.getContext('2d');
+  const colors = ['#f2b56c','#e0663c','#c9471f','#f8d58f','#b5651d','#e8913a'];
+  let W, H, dpr, list = [];
+  function size(){ dpr = Math.min(devicePixelRatio || 1, 2); W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr; cv.style.width = innerWidth + 'px'; cv.style.height = innerHeight + 'px'; }
+  size(); addEventListener('resize', size);
+  const count = innerWidth < 600 ? 16 : 30;
+  const make = (top) => ({
+    x: Math.random() * W, y: top ? -40 * dpr : Math.random() * H,
+    s: (8 + Math.random() * 14) * dpr, r: Math.random() * 6.28, vr: (Math.random() - .5) * .04,
+    vy: (.4 + Math.random() * .9) * dpr, sway: Math.random() * 6.28, sw: .01 + Math.random() * .02,
+    c: colors[Math.random() * colors.length | 0], flip: Math.random() * 6.28, a: .55 + Math.random() * .4
+  });
+  for (let i = 0; i < count; i++) list.push(make(false));
+  function leafPath(s){
+    ctx.beginPath(); ctx.moveTo(0, -s);
+    ctx.bezierCurveTo(s * .75, -s * .55, s * .7, s * .45, 0, s);
+    ctx.bezierCurveTo(-s * .7, s * .45, -s * .75, -s * .55, 0, -s);
+  }
+  let wind = 0;
+  (function tick(){
+    ctx.clearRect(0, 0, W, H);
+    wind += ((velocity * .06) + mouseX * .6 - wind) * .05;
+    velocity *= .9;
+    list.forEach((l, i) => {
+      l.sway += l.sw; l.flip += .03;
+      l.x += Math.sin(l.sway) * 1.1 * dpr + wind * dpr;
+      l.y += l.vy + Math.abs(wind) * .3 * dpr;
+      l.r += l.vr + wind * .004;
+      if (l.y > H + 50 * dpr || l.x < -80 * dpr || l.x > W + 80 * dpr) { list[i] = make(true); list[i].x = Math.random() * W; }
+      ctx.save(); ctx.translate(l.x, l.y); ctx.rotate(l.r); ctx.scale(Math.cos(l.flip), 1);
+      ctx.globalAlpha = l.a; ctx.fillStyle = l.c; leafPath(l.s); ctx.fill();
+      ctx.strokeStyle = 'rgba(60,25,10,.35)'; ctx.lineWidth = dpr; ctx.beginPath(); ctx.moveTo(0, -l.s * .9); ctx.lineTo(0, l.s * 1.15); ctx.stroke();
+      ctx.restore();
+    });
+    requestAnimationFrame(tick);
+  })();
+})();
+
+/* ---------- Calendario ---------- */
+const today = new Date(); today.setHours(0,0,0,0);
+const minDate = new Date(today); minDate.setDate(minDate.getDate() + CONFIG.minDaysAhead);
+function status(d){
+  const dow = d.getDay(); // 0 dom, 6 sáb
+  if (dow !== 0 && dow !== 6) return 'off';
+  if (CONFIG.soldOut.includes(iso(d))) return 'sold';
+  if (d < minDate) return 'sold';
+  return 'free';
+}
+function renderCalendar(){
+  const first = new Date(CONFIG.year, CONFIG.month, 1);
+  const daysIn = new Date(CONFIG.year, CONFIG.month + 1, 0).getDate();
+  const offset = (first.getDay() + 6) % 7;
+  $('#calMonth').textContent = first.toLocaleDateString('es-ES', { month: 'long' });
+  $('#calYear').textContent = CONFIG.year;
+  const box = $('#days'); box.innerHTML = '';
+  let k = 0, free = 0;
+  for (let i = 0; i < offset; i++) { const e = document.createElement('div'); e.className = 'day empty'; box.append(e); }
+  for (let n = 1; n <= daysIn; n++) {
+    const d = new Date(CONFIG.year, CONFIG.month, n), st = status(d);
+    const el = document.createElement(st === 'free' ? 'button' : 'div');
+    el.className = 'day ' + st; el.style.setProperty('--k', k++);
+    el.innerHTML = `<span class="num">${n}</span><span class="tag">${st === 'free' ? '16:00' : 'Agotado'}</span>`;
+    if (st === 'free') {
+      free++;
+      el.setAttribute('aria-label', `Reservar ${fmtLong(d)} a las 16:00`);
+      el.addEventListener('click', e => openBooking(d, e));
+    } else el.setAttribute('aria-label', `${fmtLong(d)}: agotado`);
+    box.append(el);
+  }
+  $('#left').textContent = free === 0 ? 'Todas las plazas agotadas' : `Quedan ${free} plaza${free > 1 ? 's' : ''} disponibles`;
+}
+renderCalendar();
+
+/* ---------- Reserva ---------- */
+const booking = $('#booking');
+let chosen = null, data = null;
+function openBooking(d, e){
+  chosen = d;
+  booking.style.setProperty('--cx', (e ? e.clientX : innerWidth / 2) + 'px');
+  booking.style.setProperty('--cy', (e ? e.clientY : innerHeight / 2) + 'px');
+  $('#bkDate').textContent = fmtShort(d);
+  $('#qDate').textContent = fmtLong(d);
+  $('#qToday').textContent = today.toLocaleDateString('es-ES');
+  $('#qNum').textContent = 'OT-' + iso(d).replace(/-/g,'').slice(2) + '-' + Math.floor(100 + Math.random() * 900);
+  showView(1);
+  booking.scrollTop = 0;
+  booking.classList.add('open'); booking.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
+  history.pushState({ booking: iso(d) }, '', '#reserva-' + iso(d));
+}
+function closeBooking(fromPop){
+  booking.classList.remove('open'); booking.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked');
+  if (!fromPop && location.hash.startsWith('#reserva')) history.back();
+}
+$('#back').addEventListener('click', () => closeBooking(false));
+addEventListener('popstate', () => { if (booking.classList.contains('open')) closeBooking(true); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && booking.classList.contains('open')) closeBooking(false); });
+
+function showView(n){
+  $('#v1').hidden = n !== 1; $('#v2').hidden = n !== 2;
+  $('#st1').classList.add('on'); $('#st2').classList.toggle('on', n >= 2); $('#st3').classList.toggle('on', n >= 3);
+}
+
+$('#form').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = { name: $('#fName'), last: $('#fLast'), mail: $('#fMail'), tel: $('#fTel') };
+  const ok = {
+    name: f.name.value.trim().length > 1,
+    last: f.last.value.trim().length > 1,
+    mail: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.mail.value.trim()),
+    tel: f.tel.value.replace(/\D/g,'').length >= 9
+  };
+  let valid = true;
+  for (const k in f) { const p = f[k].parentElement; p.classList.remove('err'); void p.offsetWidth; if (!ok[k]) { p.classList.add('err'); valid = false; } }
+  $('#chk').classList.toggle('err', !$('#fOk').checked);
+  if (!$('#fOk').checked) valid = false;
+  if (!valid) return;
+
+  data = { name: f.name.value.trim(), last: f.last.value.trim(), mail: f.mail.value.trim(), tel: f.tel.value.trim() };
+  $('#qName').textContent = `${data.name} ${data.last}`;
+  $('#qMail').textContent = data.mail;
+  $('#qTel').textContent = data.tel;
+  const dd = `${pad(chosen.getDate())}/${pad(chosen.getMonth()+1)}`;
+  const concept = `OTOÑO ${dd} ${data.name} ${data.last}`;
+  $('#concept').textContent = concept;
+  const msg = `¡Hola Fran! 🍂 Acabo de hacer el Bizum de 30 € para reservar la sesión de otoño.\n\n` +
+    `📅 Fecha: ${fmtLong(chosen)} a las 16:00 (Aranjuez)\n` +
+    `👤 Nombre: ${data.name} ${data.last}\n✉️ Correo: ${data.mail}\n📞 Teléfono: ${data.tel}\n` +
+    `🧾 Presupuesto: ${$('#qNum').textContent}\nConcepto Bizum: ${concept}`;
+  $('#wa').href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+  showView(2);
+  $('#panel').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+});
+$('#edit').addEventListener('click', () => showView(1));
+$('#wa').addEventListener('click', () => { $('#st3').classList.add('on'); toast('¡Gracias! Te confirmo la fecha en cuanto reciba el Bizum 🍂'); });
+$('#print').addEventListener('click', () => window.print());
+
+function copy(text, label){
+  (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(
+    () => toast(label + ' copiado'),
+    () => toast(text)
+  );
+}
+$('#copyTel').addEventListener('click', () => copy(CONFIG.bizumPhone, 'Número'));
+$('#copyConcept').addEventListener('click', () => copy($('#concept').textContent, 'Concepto'));
+let tt;
+function toast(t){ const el = $('#toast'); el.textContent = t; el.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2800); }
+</script>
+</body>
+</html>
